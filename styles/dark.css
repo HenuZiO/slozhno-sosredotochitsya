@@ -31,3 +31,7 @@
   background-color: var(--color-background);
   background-image: url(../images/cover-image-dark.png);
 }
+
+.page.theme_dark .header__record-badge {
+  display: block;
+}
