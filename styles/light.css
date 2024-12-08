@@ -8,6 +8,7 @@
     --color-text-shadow: #ff0070;
     --color-section-title: #353430;
     --color-menu-buttons: #353430;
+    --color-menu-buttons-hover: rgba(53, 52, 48, 0.4);
     --color-decorations: #353430;
   }
 
@@ -30,6 +31,7 @@
   --color-text-shadow: #ff0070;
   --color-section-title: #353430;
   --color-menu-buttons: #353430;
+  --color-menu-buttons-hover: rgba(53, 52, 48, 0.4);
   --color-decorations: #353430;
 
   background-color: var(--color-background);

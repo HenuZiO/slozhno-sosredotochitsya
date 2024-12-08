@@ -8,12 +8,14 @@
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+  transition: var(--transition);
 }
 
 .content {
   padding-inline: clamp(var(--padding-small), 2.61vw, var(--padding-medium));
   padding-block: clamp(var(--padding-large), 7.82vw, var(--padding-xl));
-  background-color: var(--color-background);
+  display: grid;
+  row-gap: clamp(50px, 10.42vw, 80px);
 }
 
 /* HEADER */
@@ -25,7 +27,8 @@
   grid-template-rows: 1fr min-content 1fr;
   align-items: center;
   padding: var(--padding-small);
-  min-block-size: 100dvh;
+  block-size: 100vh;
+  min-block-size: 668px;
 }
 
 .header__record-badge {
@@ -81,81 +84,74 @@
   text-shadow: 4px 4px 0 var(--color-text-shadow);
 }
 
-.header__subtitle {
+.header__text {
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
 }
 
-/* SECTION - CONCENTRATION */
+/* SECTIONS */
 
-.concentration {
+.section {
   display: grid;
-  row-gap: clamp(50px, 10.42vw, 80px);
+  row-gap: 20px;
 }
 
-.concentration__why-hard,
-.concentration__what-reduces,
-.concentration__how-focus {
-  display: grid;
-  gap: 20px;
-}
-
-.concentration__in-pictures {
-  display: grid;
-  gap: 10px;
-}
-
-.concentration__title {
+.section__title {
   color: var(--color-section-title);
   font-size: var(--line-height-base);
 }
 
-.concentration__content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.section__content {
+  display: grid;
+  row-gap: 20px;
 }
 
-.concentration__list,
-.concentration__item {
-  display: flex;
-  flex-direction: column;
-}
-
-.concentration__list {
-  gap: 20px;
-}
-
-.concentration__item {
-  gap: 10px;
-}
-
-.concentration__subtitle {
+.section__content-title {
   font-size: var(--line-height-base);
-}
-
-h3.concentration__subtitle {
   font-weight: var(--font-weight-bold);
 }
 
-h4.concentration__subtitle {
+h4.section__content-title {
   font-weight: var(--font-weight-normal);
 }
 
-.concentration__link {
+.section__content-list,
+.section__content-item,
+.section__content-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.section__content-list {
+  gap: 20px;
+}
+
+.section__content-item {
+  gap: 10px;
+}
+
+.section__content-text {
+  gap: 20px;
+}
+
+.section__content-link {
   text-shadow: 2px 2px 0px var(--color-accent);
 }
 
-.concentration__gallery {
+.section__content-gallery {
   display: grid;
   row-gap: 10px;
 }
 
-.concentration__gallery-image {
+.section__content-image {
   width: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.section-gallery .section__content {
+  row-gap: 10px;
 }
 
 /* FOOTER */
@@ -164,8 +160,8 @@ h4.concentration__subtitle {
   display: grid;
   place-items: center;
   padding: var(--padding-small);
-  background-color: var(--color-background);
-  min-block-size: 100dvh;
+  block-size: 100vh;
+  min-block-size: 668px;
 }
 
 .footer__title {
@@ -196,31 +192,31 @@ h4.concentration__subtitle {
     margin-inline-start: -0.16em;
   }
 
-  .header__subtitle {
+  .header__text {
     justify-self: end;
     max-inline-size: 50%;
   }
 
-  .concentration__why-hard,
-  .concentration__how-focus,
-  .concentration__what-reduces {
+  .section-why,
+  .section-causes,
+  .section-advices {
     grid-template-columns: 1fr 2fr;
+    column-gap: 20px;
   }
 
-  .concentration__what-reduces > .concentration__title {
+  .section-causes > .section__title {
     grid-column: 1 / 2;
-    min-width: 0;
   }
 
-  .concentration__what-reduces > .concentration__list {
+  .section-causes > .section__content {
     grid-column: 1 / -1;
   }
 
-  .concentration__in-pictures {
-    gap: 20px;
+  .section-gallery .section__content {
+    row-gap: 20px;
   }
 
-  .concentration__gallery {
+  .section__content-gallery {
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
       'sunset sunset icecream'
@@ -229,28 +225,28 @@ h4.concentration__subtitle {
     gap: 20px;
   }
 
-  .concentration__gallery-image:nth-child(1) {
+  .section__content-image {
+    height: 100%;
+  }
+
+  .section__content-image:nth-child(1) {
     grid-area: sunset;
   }
 
-  .concentration__gallery-image:nth-child(2) {
+  .section__content-image:nth-child(2) {
     grid-area: icecream;
   }
 
-  .concentration__gallery-image:nth-child(3) {
+  .section__content-image:nth-child(3) {
     grid-area: tape;
   }
 
-  .concentration__gallery-image:nth-child(4) {
+  .section__content-image:nth-child(4) {
     grid-area: books;
   }
 
-  .concentration__gallery-image:nth-child(5) {
+  .section__content-image:nth-child(5) {
     grid-area: street;
-  }
-
-  .concentration__gallery-image {
-    height: 100%;
   }
 
   .footer {
@@ -272,13 +268,11 @@ h4.concentration__subtitle {
     margin-inline-start: -0.12em;
   }
 
-  .concentration__why-hard,
-  .concentration__how-focus,
-  .concentration__what-reduces {
+  .section {
     column-gap: 10px;
   }
 
-  .concentration__what-reduces .concentration__list {
+  .section-causes .section__content-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
@@ -288,7 +282,7 @@ h4.concentration__subtitle {
 
 @media (hover: hover) {
   .header__theme-menu-button:hover {
-    border: 1px solid currentColor;
+    border: 1px solid var(--color-menu-buttons-hover);
   }
 
   .header__theme-menu-button:focus {
@@ -299,15 +293,15 @@ h4.concentration__subtitle {
     border-bottom: 1px solid currentColor;
   }
 
-  .concentration__link:hover {
+  .section__content-link:hover {
     border-bottom: 1px solid currentColor;
   }
 
-  .concentration__link:focus {
+  .section__content-link:focus {
     outline: none;
   }
 
-  .concentration__link:focus-visible {
+  .section__content-link:focus-visible {
     outline: 1px solid currentColor;
   }
 }

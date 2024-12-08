@@ -1,6 +1,6 @@
 :root {
   /* COLORS */
-  --color-background: #000028;
+  --color-background: rgb(0, 0, 40);
   --color-foreground: #f1b2ce;
   --color-accent: #ff0070;
   --color-accent-foreground: #000028;
@@ -8,6 +8,7 @@
   --color-text-shadow: #ff0070;
   --color-section-title: #ff0070;
   --color-menu-buttons: #ff0070;
+  --color-menu-buttons-hover: rgba(255, 0, 112, 0.4);
   --color-decorations: #ff0070;
 
   /* FONTS */
@@ -24,4 +25,7 @@
   --padding-medium: 20px;
   --padding-large: 40px;
   --padding-xl: 60px;
+
+  /* EFFECTS */
+  --transition: all 0.2s ease-in-out;
 }
